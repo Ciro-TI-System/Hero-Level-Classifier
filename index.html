@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Classificador de nível de Herói</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-image: url("assets/justice-league-1887-x-1020-background-ej7abpi87thkfwop.jpg");
+        background-size: cover;
+      }
+      .container {
+        width: 300px;
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+      }
+      button {
+        margin-top: 20px;
+      }
+      #nomeHeroi,
+      #nivelHeroi {
+        color: blue; /* Altere para a cor desejada */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Classificador de nível de Herói</h1>
+      <label for="nome">Nome do herói:</label><br />
+      <input type="text" id="nome" /><br />
+      <label for="xp">Experiência (XP):</label><br />
+      <input type="number" id="xp" /><br />
+      <button onclick="classificarHeroi()">Classificar</button>
+      <p id="resultado">
+        O Herói de nome <span id="nomeHeroi"></span> está no nível de
+        <span id="nivelHeroi"></span>
+      </p>
+    </div>
+
+    <script>
+      function classificarHeroi() {
+        const nome = document.getElementById("nome").value;
+        const xp = document.getElementById("xp").value;
+
+        if (isEntradaInvalida(nome, xp)) {
+          return;
+        }
+
+        const nivel = determinarNivel(Number(xp));
+
+        exibirResultado(nome, nivel);
+      }
+
+      function isEntradaInvalida(nome, xp) {
+        if (isVazioOuNulo(nome)) {
+          alert("Por favor, insira um nome válido.");
+          return true;
+        }
+        if (isVazioOuNulo(xp)) {
+          alert("Por favor, insira uma quantidade de experiência válida.");
+          return true;
+        }
+        return false;
+      }
+
+      function isVazioOuNulo(valor) {
+        return !valor || valor.trim() === "";
+      }
+
+      function determinarNivel(xp) {
+        if (xp < 1000) return "Ferro";
+        if (xp >= 1001 && xp <= 2000) return "Bronze";
+        if (xp >= 2001 && xp <= 5000) return "Prata";
+        if (xp >= 5001 && xp <= 6000) return "Ouro";
+        if (xp >= 6001 && xp <= 7000) return "Diamante";
+        if (xp >= 7001 && xp <= 8000) return "Platina";
+        if (xp >= 8001 && xp <= 9000) return "Ascendente";
+        if (xp >= 9001 && xp <= 10000) return "Imortal";
+        if (xp >= 10001) return "Radiante";
+      }
+
+      function exibirResultado(nome, nivel) {
+        document.getElementById("nomeHeroi").textContent = nome;
+        document.getElementById("nivelHeroi").textContent = nivel;
+      }
+    </script>
+  </body>
+</html>
