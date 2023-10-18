@@ -20,7 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 🎲 DEMO
 
-https://github.com/Ciro-TI-System/Hero-Level-Classifier/assets/78507494/cf248d68-0e44-4932-958f-839897a49b00
+
 
 <br>
 
